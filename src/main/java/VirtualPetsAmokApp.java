@@ -1,9 +1,6 @@
 import java.util.Map.Entry;
 import java.util.Scanner;
 
-
-
-
 public class VirtualPetsAmokApp {
 
 	public static void main(String[] args) {
@@ -11,10 +8,10 @@ public class VirtualPetsAmokApp {
 		Scanner input = new Scanner(System.in);
 
 		VirtualPetShelter petShelter = new VirtualPetShelter();
-		VirtualPet curly = new VirtualPet("shemp", " German Shephard");
-		VirtualPet larry = new VirtualPet("larry", " the RoboDog");
-		VirtualPet moe = new VirtualPet("moe", " the RoboCat");
-		VirtualPet shemp = new VirtualPet("curly", " the Cat");
+		OrganicDog curly = new OrganicDog("shemp", " the Dog");
+		RoboDog larry = new RoboDog("larry", " RoboDog");
+		RoboCat moe = new RoboCat("moe", " RoboCat");
+		OrganicCat shemp = new OrganicCat("curly", " the Cat");
 
 		petShelter.addPet(curly);
 		petShelter.addPet(larry);
@@ -22,31 +19,25 @@ public class VirtualPetsAmokApp {
 		petShelter.addPet(shemp);
 
 		System.out.println("Welcome to our animal shelter! Here is a list of the animals staying with us: \n");
-		statTemplate();
-		for (Entry<String, VirtualPet> entry : petShelter.getShelteredPets().entrySet()) {
-			System.out.println(entry.getValue());
-		}
+		petShelter.petList();
 		menuOptions();
 		String userOpt;
-
 		do {
-			//Tick
+			// Tick
 			petShelter.petUpdate();
-			
+
 			userOpt = input.nextLine();
-			
-			//Game
+
+			// Game
 			if (userOpt.equals("1")) {
 				petShelter.feedPets();
 				System.out.println("You fed all of the pets\n");
-				statTemplate();
-				for (Entry<String, VirtualPet> entry : petShelter.getShelteredPets().entrySet()) {
-					System.out.println(entry.getValue());
-				}		
+				petShelter.petList();
 				menuOptions();
 			}
 			if (userOpt.equals("2")) {
-				System.out.println("Awesome, you want to play with one of the pets! Please choose one to play with: \n");
+				System.out
+						.println("Awesome, you want to play with one of the pets! Please choose one to play with: \n");
 				for (VirtualPet i : petShelter.shelteredPetsValues()) {
 					System.out.print(i.getName());
 					System.out.println("" + i.getDescription());
@@ -54,45 +45,30 @@ public class VirtualPetsAmokApp {
 				userOpt = input.nextLine();
 				petShelter.playWithPet(userOpt);
 				System.out.println("You played with " + userOpt);
-				statTemplate();
-				for (Entry<String, VirtualPet> entry : petShelter.getShelteredPets().entrySet()) {
-					System.out.println(entry.getValue());
-				}
+				petShelter.petList();
 				menuOptions();
 			}
 			if (userOpt.equals("3")) {
 				petShelter.pottyPets();
 				System.out.println("Break out a shovel, you got lots of poop to pick up!\n");
-				statTemplate();
-				for (Entry<String, VirtualPet> entry : petShelter.getShelteredPets().entrySet()) {
-					System.out.println(entry.getValue());
-				}
+				petShelter.petList();
 				menuOptions();
 			}
 			if (userOpt.equals("4")) {
 				petShelter.restPets();
 				System.out.println("You gave all your pets a nap\n");
-				statTemplate();
-				for (Entry<String, VirtualPet> entry : petShelter.getShelteredPets().entrySet()) {
-					System.out.println(entry.getValue());
-				}
+				petShelter.petList();
 				menuOptions();
 			}
 			if (userOpt.equals("5")) {
 				petShelter.waterPets();
 				System.out.println("You watered all of your pets");
-				statTemplate();
-				for (Entry<String, VirtualPet> entry : petShelter.getShelteredPets().entrySet()) {
-					System.out.println(entry.getValue());
-				}
+				petShelter.petList();
 				menuOptions();
 			}
 			if (userOpt.equals("6")) {
 				System.out.println("Here are the updated stats for all of the pets: ");
-				statTemplate();
-				for (Entry<String, VirtualPet> entry : petShelter.getShelteredPets().entrySet()) {
-					System.out.println(entry.getValue());
-				}
+				petShelter.petList();
 				menuOptions();
 			}
 			if (userOpt.equals("7")) {
@@ -109,20 +85,33 @@ public class VirtualPetsAmokApp {
 			if (userOpt.equals("8")) {
 				System.out.println("We will be happy to look after a pet for you.\nWhat is the name of the pet?\n");
 				String admitPetName = input.nextLine().toLowerCase();
-				System.out.println("Please give a description of what the pet looks like: \n");
+				System.out.println("What type of pet? Choose one:");
+				System.out.println("1: Dog");
+				System.out.println("2: Cat");
+				System.out.println("3: Robot Dog");
+				System.out.println("4: Robot Cat");
 				String admitPetDesc = input.nextLine().toLowerCase();
-				VirtualPet newPet = new VirtualPet(admitPetName, admitPetDesc);
-				petShelter.addPet(newPet);
-				System.out.println("You adopted " + userOpt + "\nThanks again for adopting a pet!");
+				if (admitPetDesc.equals("1")) {
+					OrganicDog newPet = new OrganicDog(admitPetName, admitPetDesc);
+					petShelter.addPet(newPet);
+				}
+				if (admitPetDesc.equals("2")) {
+					RoboDog newPet = new RoboDog(admitPetName, admitPetDesc);
+					petShelter.addPet(newPet);
+				}
+				if (admitPetDesc.equals("3")) {
+					OrganicCat newPet = new OrganicCat(admitPetName, admitPetDesc);
+					petShelter.addPet(newPet);
+				}
+				if (admitPetDesc.equals("3")) {
+					RoboCat newPet = new RoboCat(admitPetName, admitPetDesc);
+					petShelter.addPet(newPet);
+				}
+				System.out.println("You admitted " + userOpt + "\nThank you!");
 				menuOptions();
 			}
 		} while (!userOpt.equals("9"));
 
-	}
-	
-	public static void statTemplate() {
-		System.out.println("Name\t\t|Hunger\t|Bored\t|Potty\t|tired\t|thirst");
-		System.out.println("-------\t\t|------\t|------\t|------\t|------\t|-------");
 	}
 
 	public static void menuOptions() {

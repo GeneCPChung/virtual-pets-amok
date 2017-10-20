@@ -4,5 +4,4 @@ public interface OrganicInterface {
 	public void waterPets();
 	public void cleanPets();
 	
-
 }

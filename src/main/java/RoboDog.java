@@ -8,6 +8,10 @@ public class RoboDog extends DogParent implements RoboticInterface{
 		super(name, description, hunger, boredom, needToPotty, tiredness, thirst);
 	}
 
+	public RoboDog(String name, String description) {
+		super(name, description);
+	}
+
 	@Override
 	public void oilPets() {
 	}

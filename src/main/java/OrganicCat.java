@@ -6,6 +6,10 @@ public class OrganicCat extends VirtualPet implements OrganicInterface{
 		super(name, description, hunger, boredom, needToPotty, tiredness, thirst);
 	}
 
+	public OrganicCat(String name, String description) {
+		super(name, description);
+	}
+
 	@Override
 	public void feedPets() {
 	}

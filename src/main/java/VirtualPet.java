@@ -1,6 +1,6 @@
 import java.util.Random;
 
-public class VirtualPet {
+public abstract class VirtualPet {
 	Random rand = new Random();
 	int rngAct = rand.nextInt(10) + 1;
 	int rngNum1 = rand.nextInt(10) + 1;
@@ -90,7 +90,7 @@ public class VirtualPet {
 	public int getThirst() {
 		return tiredness;
 	}
-
+	
 	// Actions
 	void feeding() {
 		int eating = rngAct;

@@ -1,6 +1,7 @@
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Map.Entry;
 
 
 public class VirtualPetShelter {
@@ -59,6 +60,14 @@ private	Map<String, VirtualPet> shelteredPets = new HashMap<String, VirtualPet>(
 	public void petUpdate() {
 		for (VirtualPet pets : shelteredPets.values()) {
 			pets.getTick();
+		}
+	}
+	
+	public void petList() {
+		System.out.println("Name\t\t|Hunger\t|Bored\t|Potty\t|tired\t|thirst");
+		System.out.println("-------\t\t|------\t|------\t|------\t|------\t|-------");
+		for (Entry<String, VirtualPet> entry : shelteredPets.entrySet()) {
+			System.out.println(entry.getValue());
 		}
 	}
 	

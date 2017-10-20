@@ -6,7 +6,11 @@ public class OrganicDog extends DogParent implements OrganicInterface{
 			int thirst) {
 		super(name, description, hunger, boredom, needToPotty, tiredness, thirst);
 	}
+	public OrganicDog(String name, String description) {
+		super(name, description);
+	}
 
+	
 	@Override
 	public void feedPets() {
 	}
@@ -17,7 +21,7 @@ public class OrganicDog extends DogParent implements OrganicInterface{
 
 	@Override
 	public void cleanPets() {
-		//TODO calculate walk-dog
+		
 	}
 
 }
