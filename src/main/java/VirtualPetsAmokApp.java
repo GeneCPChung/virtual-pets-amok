@@ -23,7 +23,7 @@ public class VirtualPetsAmokApp {
 
 		System.out.println("Welcome to our animal shelter! Here is a list of the animals staying with us: \n");
 		statTemplate();
-		for (Entry<String, VirtualPet> entry : petShelter.shelteredPets.entrySet()) {
+		for (Entry<String, VirtualPet> entry : petShelter.getShelteredPets().entrySet()) {
 			System.out.println(entry.getValue());
 		}
 		menuOptions();
@@ -40,7 +40,7 @@ public class VirtualPetsAmokApp {
 				petShelter.feedPets();
 				System.out.println("You fed all of the pets\n");
 				statTemplate();
-				for (Entry<String, VirtualPet> entry : petShelter.shelteredPets.entrySet()) {
+				for (Entry<String, VirtualPet> entry : petShelter.getShelteredPets().entrySet()) {
 					System.out.println(entry.getValue());
 				}		
 				menuOptions();
@@ -55,7 +55,7 @@ public class VirtualPetsAmokApp {
 				petShelter.playWithPet(userOpt);
 				System.out.println("You played with " + userOpt);
 				statTemplate();
-				for (Entry<String, VirtualPet> entry : petShelter.shelteredPets.entrySet()) {
+				for (Entry<String, VirtualPet> entry : petShelter.getShelteredPets().entrySet()) {
 					System.out.println(entry.getValue());
 				}
 				menuOptions();
@@ -64,7 +64,7 @@ public class VirtualPetsAmokApp {
 				petShelter.pottyPets();
 				System.out.println("Break out a shovel, you got lots of poop to pick up!\n");
 				statTemplate();
-				for (Entry<String, VirtualPet> entry : petShelter.shelteredPets.entrySet()) {
+				for (Entry<String, VirtualPet> entry : petShelter.getShelteredPets().entrySet()) {
 					System.out.println(entry.getValue());
 				}
 				menuOptions();
@@ -73,7 +73,7 @@ public class VirtualPetsAmokApp {
 				petShelter.restPets();
 				System.out.println("You gave all your pets a nap\n");
 				statTemplate();
-				for (Entry<String, VirtualPet> entry : petShelter.shelteredPets.entrySet()) {
+				for (Entry<String, VirtualPet> entry : petShelter.getShelteredPets().entrySet()) {
 					System.out.println(entry.getValue());
 				}
 				menuOptions();
@@ -82,7 +82,7 @@ public class VirtualPetsAmokApp {
 				petShelter.waterPets();
 				System.out.println("You watered all of your pets");
 				statTemplate();
-				for (Entry<String, VirtualPet> entry : petShelter.shelteredPets.entrySet()) {
+				for (Entry<String, VirtualPet> entry : petShelter.getShelteredPets().entrySet()) {
 					System.out.println(entry.getValue());
 				}
 				menuOptions();
@@ -90,7 +90,7 @@ public class VirtualPetsAmokApp {
 			if (userOpt.equals("6")) {
 				System.out.println("Here are the updated stats for all of the pets: ");
 				statTemplate();
-				for (Entry<String, VirtualPet> entry : petShelter.shelteredPets.entrySet()) {
+				for (Entry<String, VirtualPet> entry : petShelter.getShelteredPets().entrySet()) {
 					System.out.println(entry.getValue());
 				}
 				menuOptions();

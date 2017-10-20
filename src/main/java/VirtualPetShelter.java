@@ -1,22 +1,28 @@
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Random;
-import java.util.Map.Entry;
-import java.util.Set;
+
 
 public class VirtualPetShelter {
 
-	Map<String, VirtualPet> shelteredPets = new HashMap<String, VirtualPet>();
+private	Map<String, VirtualPet> shelteredPets = new HashMap<String, VirtualPet>();
 
+	public void accessShelteredPets(Map<String, VirtualPet> shelteredPets) {
+		this.shelteredPets = shelteredPets;
+	}
+	public Map<String, VirtualPet> getShelteredPets() {
+		return shelteredPets;
+	}
+	
 	public Collection<VirtualPet> shelteredPetsValues() {
 	return shelteredPets.values();
 	}
-
+	
 	public VirtualPet accessShelteredPet(VirtualPet name) {
 		return name;
 	}
 
+	
 	public void feedPets() {
 		for (VirtualPet pets : shelteredPets.values()) {
 			pets.feeding();

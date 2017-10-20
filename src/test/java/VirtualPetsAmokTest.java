@@ -1,4 +1,4 @@
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 import static org.junit.Assert.assertNotNull;
 
 import org.junit.Test;
@@ -7,10 +7,12 @@ import org.junit.Test;
 
 public class VirtualPetsAmokTest {
 	@Test
-	public void shouldBeAbleToCreateADoctorObject() {
-		RoboCat underTest = new RoboCat();
+	public void shouldBeAbleToCreateARoboCatObject() {
+		RoboCat underTest = new RoboCat(null, null, 0, 0, 0, 0, 0);
 		assertNotNull(underTest);
 	}
+
+	/*
 	
 	@Test
 	public void assertThatDoctorIsAHospitalEmployee() {
@@ -51,4 +53,7 @@ public class VirtualPetsAmokTest {
 		double check = underTest.getPatientHealth();
 		assertEquals(120000, check, 0);
 	}
+
+*/
+
 }
