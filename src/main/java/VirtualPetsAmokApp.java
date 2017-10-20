@@ -1,4 +1,3 @@
-import java.util.Map.Entry;
 import java.util.Scanner;
 
 public class VirtualPetsAmokApp {
@@ -8,31 +7,34 @@ public class VirtualPetsAmokApp {
 		Scanner input = new Scanner(System.in);
 
 		VirtualPetShelter petShelter = new VirtualPetShelter();
-		OrganicDog curly = new OrganicDog("shemp", " the Dog");
-		RoboDog larry = new RoboDog("larry", " RoboDog");
-		RoboCat moe = new RoboCat("moe", " RoboCat");
-		OrganicCat shemp = new OrganicCat("curly", " the Cat");
+		OrganicDog curly = new OrganicDog("Shemp", " the Dog");
+		RoboDog larry = new RoboDog("Larry", " RoboDog");
+		RoboCat moe = new RoboCat("Moe", " RoboCat");
+		OrganicCat shemp = new OrganicCat("Curly", " the Cat");
 
 		petShelter.addPet(curly);
 		petShelter.addPet(larry);
 		petShelter.addPet(moe);
 		petShelter.addPet(shemp);
 
-		System.out.println("Welcome to our animal shelter! Here is a list of the animals staying with us: \n");
+		System.out.println("Thanks for volunteering at our shelter! Here is a list of the animals that we have: \n");
 		petShelter.petList();
 		menuOptions();
 		String userOpt;
 		do {
 			// Tick
 			petShelter.petUpdate();
+			petShelter.litterBoxStatus();
 
 			userOpt = input.nextLine();
 
 			// Game
+
+			// Create feeding based on robot or organic
 			if (userOpt.equals("1")) {
 				petShelter.feedPets();
 				System.out.println("You fed all of the pets\n");
-				petShelter.petList();
+				petShelter.feedPets();
 				menuOptions();
 			}
 			if (userOpt.equals("2")) {
@@ -42,7 +44,8 @@ public class VirtualPetsAmokApp {
 					System.out.print(i.getName());
 					System.out.println("" + i.getDescription());
 				}
-				userOpt = input.nextLine();
+				userOpt = input.nextLine().toLowerCase();
+				userOpt = userOpt.substring(0, 1).toUpperCase() + userOpt.substring(1).toLowerCase();
 				petShelter.playWithPet(userOpt);
 				System.out.println("You played with " + userOpt);
 				petShelter.petList();
@@ -78,6 +81,7 @@ public class VirtualPetsAmokApp {
 					System.out.println("" + i.getDescription());
 				}
 				userOpt = input.nextLine().toLowerCase();
+				userOpt = userOpt.substring(0, 1).toUpperCase() + userOpt.substring(1).toLowerCase();
 				petShelter.removePet(userOpt);
 				System.out.println("You adopted " + userOpt + "\nThanks again for adopting a pet!");
 				menuOptions();
@@ -86,28 +90,31 @@ public class VirtualPetsAmokApp {
 				System.out.println("We will be happy to look after a pet for you.\nWhat is the name of the pet?\n");
 				String admitPetName = input.nextLine().toLowerCase();
 				System.out.println("What type of pet? Choose one:");
-				System.out.println("1: Dog");
-				System.out.println("2: Cat");
-				System.out.println("3: Robot Dog");
-				System.out.println("4: Robot Cat");
+				System.out.println("Dog");
+				System.out.println("Cat");
+				System.out.println("Robot Dog");
+				System.out.println("Robot Cat");
 				String admitPetDesc = input.nextLine().toLowerCase();
-				if (admitPetDesc.equals("1")) {
+
+				if (admitPetDesc.equalsIgnoreCase("Dog")) {
+
 					OrganicDog newPet = new OrganicDog(admitPetName, admitPetDesc);
 					petShelter.addPet(newPet);
 				}
-				if (admitPetDesc.equals("2")) {
+				if (admitPetDesc.equalsIgnoreCase("Robot Dog")) {
 					RoboDog newPet = new RoboDog(admitPetName, admitPetDesc);
 					petShelter.addPet(newPet);
 				}
-				if (admitPetDesc.equals("3")) {
+				if (admitPetDesc.equalsIgnoreCase("Cat")) {
 					OrganicCat newPet = new OrganicCat(admitPetName, admitPetDesc);
 					petShelter.addPet(newPet);
 				}
-				if (admitPetDesc.equals("3")) {
+				if (admitPetDesc.equalsIgnoreCase("Robot Cat")) {
 					RoboCat newPet = new RoboCat(admitPetName, admitPetDesc);
 					petShelter.addPet(newPet);
 				}
-				System.out.println("You admitted " + userOpt + "\nThank you!");
+
+				System.out.println("You admitted " + admitPetName + "\nThank you!");
 				menuOptions();
 			}
 		} while (!userOpt.equals("9"));

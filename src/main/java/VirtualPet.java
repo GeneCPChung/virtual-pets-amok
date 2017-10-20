@@ -9,19 +9,24 @@ public abstract class VirtualPet {
 	int rngNum4 = rand.nextInt(10) + 1;
 	int rngNum5 = rand.nextInt(10) + 1;
 	int rngNum6 = rand.nextInt(10) + 1;
+	int rngNum7 = rand.nextInt(10) + 1;
+	int rngNum8 = rand.nextInt(10) + 1;
 
 	// Instance Data
-	private String name;
-	private String description;
-	private int hunger = rngNum1;
-	private int boredom = rngNum2;
-	private int needToPotty = rngNum3;
-	private int tiredness = rngNum4;
-	private int thirst = rngNum5;
+
+	protected String name;
+	protected String description;
+	protected int hunger = rngNum1;
+	protected int boredom = rngNum2;
+	protected int needToPotty = rngNum3;
+	protected int tiredness = rngNum4;
+	protected int thirst = rngNum5;
+	protected int totalHappiness = rngNum7;
+	protected int totalHealth = rngNum8;
 
 	// Constructor
 	public VirtualPet(String name, String description, int hunger, int boredom, int needToPotty, int tiredness,
-			int thirst) {
+			int thirst, int totalHappiness, int totalHealth) {
 		this.name = name;
 		this.description = description;
 		this.hunger = hunger;
@@ -29,6 +34,8 @@ public abstract class VirtualPet {
 		this.needToPotty = needToPotty;
 		this.tiredness = tiredness;
 		this.thirst = thirst;
+		this.totalHappiness = totalHappiness;
+		this.totalHealth = totalHealth;
 	}
 
 	public VirtualPet(String name, String description) {
@@ -63,6 +70,14 @@ public abstract class VirtualPet {
 		}
 	}
 
+	public int getTotalHealth() {
+		return totalHealth;
+	}
+
+	public int getTotalHappiness() {
+		return totalHappiness;
+	}
+
 	public String getName() {
 		return name;
 	}
@@ -90,14 +105,8 @@ public abstract class VirtualPet {
 	public int getThirst() {
 		return tiredness;
 	}
-	
-	// Actions
-	void feeding() {
-		int eating = rngAct;
-		hunger += eating;
-		needToPotty += eating;
 
-	}
+	// Actions
 
 	void playing() {
 		int play = rngAct;
@@ -125,8 +134,9 @@ public abstract class VirtualPet {
 
 	@Override
 	public String toString() {
-		return "" + this.name + this.description + "\t|" + this.hunger + "\t|" + this.boredom + "\t|" + this.needToPotty
-				+ "\t|" + this.tiredness + "\t|" + this.thirst;
+		return "" + this.name + this.description + "\t|" + this.totalHappiness + "\t|" + this.totalHealth + "\t|"
+				+ this.hunger + "\t|" + this.boredom + "\t|" + this.needToPotty + "\t|" + this.tiredness + "\t|"
+				+ this.thirst;
 	}
 
 }

@@ -1,2 +1,7 @@
 - Created needed class files
--
+- userOpt = input.nextLine().toLowerCase();
+	userOpt = userOpt.substring(0, 1).toUpperCase() + userOpt.substring(1).toLowerCase();
+	
+	
+	//instance variable for litter box. create a method to calculate based on how many cats are in the shelter
+	

@@ -1,59 +1,37 @@
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 import org.junit.Test;
 
-
-
 public class VirtualPetsAmokTest {
 	@Test
 	public void shouldBeAbleToCreateARoboCatObject() {
-		RoboCat underTest = new RoboCat(null, null, 0, 0, 0, 0, 0);
+		RoboCat underTest = new RoboCat(null, null, 0, 0, 0, 0, 0, 0, 0);
 		assertNotNull(underTest);
 	}
 
-	/*
-	
 	@Test
-	public void assertThatDoctorIsAHospitalEmployee() {
-		OrganicCat underTest = new OrganicCat();
-		assertNotNull(underTest);
-	}
-	@Test
-	public void shouldBeAbleToCreateASurgeonObject() {
-		Surgeon underTest = new Surgeon("", "", "", false);
-		assertNotNull(underTest);
-	}
-	@Test
-	public void shouldBeAbleToCreateAReceptionistObject() {
-		Receptionist underTest = new Receptionist("", "", true);
-		assertNotNull(underTest);
-	}
-	@Test
-	public void shouldBeAbleToCreateAJanitorObject() {
-		Janitor underTest = new Janitor("", "", true);
-		assertNotNull(underTest);
-	}
-	@Test
-	public void assertThatJanitorIsAHospitalEmployee() {
-		HospitalEmployees underTest = new Janitor("", "", true);
-		assertNotNull(underTest);
-	}
-	@Test
-	public void assertThatPatientHealthIs20() {
-		Doctor underTest = new Doctor("", "", "");
-		underTest.careForPatient();
-		int check = underTest.getPatientHealth();
-		assertEquals(20, check);
-	}
-	@Test
-	public void assertThatSurgeonSalaryIs120000() {
-		Surgeon underTest = new Surgeon("", "", "", true);
-		underTest.careForPatient();
-		double check = underTest.getPatientHealth();
-		assertEquals(120000, check, 0);
+	public void assertThatDogsAreBeingWalked() {
+		DogParent underTest = new DogParent(null, null, 0, 75, 0, 0, 0, 0, 0);
+		underTest.takeAWalk();
+		int check = underTest.getBoredom();
+		assertEquals(check, 50);
 	}
 
-*/
+	@Test
+	public void assertThatCatsAreBeingFed() {
+		OrganicCat underTest = new OrganicCat(null, null, 75, 0, 0, 0, 0, 0, 0);
+		underTest.feedPets();
+		int check = underTest.getHunger();
+		assertEquals(check, 50);
+	}
+
+	// @Test
+	// public void assertThatDogCagesAreCleaned() {
+	// OrganicDog underTest = new OrganicDog(null, null);
+	// underTest.cleanPets();
+	// int check = underTest.getCageStatus();
+	// assertEquals(check, 1);
+	// }
 
 }
