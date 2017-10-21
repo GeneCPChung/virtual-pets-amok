@@ -23,7 +23,6 @@ public class DogParent extends VirtualPet {
 	public void takeAWalk() {
 		this.totalHappiness += walking;
 		this.boredom -= walking;
-		this.needToPotty -= walking;
 	}
 
 }

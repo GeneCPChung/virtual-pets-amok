@@ -78,16 +78,16 @@ public abstract class VirtualPet {
 		return totalHappiness;
 	}
 
+	public int getHunger() {
+		return hunger;
+	}
+
 	public String getName() {
 		return name;
 	}
 
 	public String getDescription() {
 		return description;
-	}
-
-	public int getHunger() {
-		return hunger;
 	}
 
 	public int getBoredom() {

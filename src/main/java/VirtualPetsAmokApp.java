@@ -11,11 +11,13 @@ public class VirtualPetsAmokApp {
 		RoboDog larry = new RoboDog("Larry", " RoboDog");
 		RoboCat moe = new RoboCat("Moe", " RoboCat");
 		OrganicCat shemp = new OrganicCat("Curly", " the Cat");
+		OrganicCat sherry = new OrganicCat("Sherry", " the Cat");
 
 		petShelter.addPet(curly);
 		petShelter.addPet(larry);
 		petShelter.addPet(moe);
 		petShelter.addPet(shemp);
+		petShelter.addPet(sherry);
 
 		System.out.println("Thanks for volunteering at our shelter! Here is a list of the animals that we have: \n");
 		petShelter.petList();
@@ -32,9 +34,9 @@ public class VirtualPetsAmokApp {
 
 			// Create feeding based on robot or organic
 			if (userOpt.equals("1")) {
-				petShelter.feedPets();
-				System.out.println("You fed all of the pets\n");
-				petShelter.feedPets();
+				System.out.println("Would you like to feed the Robot Pets or Organic Pets?");
+				System.out.println("Choose:\n1: To feed the Robot Pets\n2: To feed the Organic Pets");
+
 				menuOptions();
 			}
 			if (userOpt.equals("2")) {

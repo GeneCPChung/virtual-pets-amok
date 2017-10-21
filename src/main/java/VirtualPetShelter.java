@@ -59,11 +59,12 @@ public class VirtualPetShelter {
 	public void petUpdate() {
 		for (VirtualPet pets : shelteredPets.values()) {
 			pets.getTick();
-			litterBoxFull();
+			fillLitterBox();
+
 		}
 	}
 
-	public void litterBoxFull() {
+	public void fillLitterBox() {
 		for (VirtualPet pets : shelteredPets.values()) {
 			if (pets instanceof OrganicCat) {
 				litterBox += 5;
@@ -72,21 +73,15 @@ public class VirtualPetShelter {
 	}
 
 	public void litterBoxStatus() {
-		if (this.getLitterBox() < 5) {
+		if (this.getLitterBox() <= 5) {
+			System.out.println(litterBox);
 			System.out.println("Litter Box is about empty.");
 		}
-		if (this.getLitterBox() >= 5 && this.getLitterBox() < 10) {
+		if (this.getLitterBox() >= 5) {
+			System.out.println(litterBox);
 			System.out.println("Litter Box is 1/4 full.");
 		}
-		if (this.getLitterBox() >= 10 && this.getLitterBox() < 15) {
-			System.out.println("Litter Box is 1/2 full.");
-		}
-		if (this.getLitterBox() >= 15 && this.getLitterBox() < 20) {
-			System.out.println("Litter Box is 3/4 full.");
-		}
-		if (this.getLitterBox() == 20) {
-			System.out.println("Litter Box is now full.");
-		}
+
 	}
 
 	public void petList() {
