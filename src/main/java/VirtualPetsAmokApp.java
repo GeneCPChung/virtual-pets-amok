@@ -6,6 +6,7 @@ public class VirtualPetsAmokApp {
 		@SuppressWarnings("resource")
 		Scanner input = new Scanner(System.in);
 
+		DogParent dogWalk = new DogParent(null, null);
 		VirtualPetShelter petShelter = new VirtualPetShelter();
 		OrganicDog curly = new OrganicDog("Shemp", " the Dog");
 		RoboDog larry = new RoboDog("Larry", " RoboDog");
@@ -26,8 +27,6 @@ public class VirtualPetsAmokApp {
 		do {
 			// Tick
 			petShelter.petUpdate();
-			petShelter.litterBoxStatus();
-
 			userOpt = input.nextLine();
 
 			// Game
@@ -54,8 +53,8 @@ public class VirtualPetsAmokApp {
 				menuOptions();
 			}
 			if (userOpt.equals("3")) {
-				petShelter.pottyPets();
-				System.out.println("Break out a shovel, you got lots of poop to pick up!\n");
+				petShelter.cleanDogCages();
+				System.out.println("All the dog cages have been cleaned\n");
 				petShelter.petList();
 				menuOptions();
 			}
@@ -119,20 +118,27 @@ public class VirtualPetsAmokApp {
 				System.out.println("You admitted " + admitPetName + "\nThank you!");
 				menuOptions();
 			}
-		} while (!userOpt.equals("9"));
+			if (userOpt.equals("9")) {
+				dogWalk.takeAWalk();
+				System.out.println("The dogs enjoyed their walk around the neighborhood\n");
+				petShelter.petList();
+				menuOptions();
+			}
+		} while (!userOpt.equals("10"));
 
 	}
 
 	public static void menuOptions() {
-		System.out.println("\nWhat would you like to help with?");
-		System.out.println("\n1: Feed all of the pets");
+		System.out.println("\nWhat would you like to help with?\n");
+		System.out.println("1: Feed all of the pets");
 		System.out.println("2: Play with one of the pets");
-		System.out.println("3 Potty all the pets");
-		System.out.println("4 Give the pets a nap");
+		System.out.println("3: Clean the dog cages");
+		System.out.println("4: Give the pets a nap");
 		System.out.println("5: Give all of the pets some water");
-		System.out.println("6 Check on the pets stats");
+		System.out.println("6: Check on the pets stats");
 		System.out.println("7: Adopt a pet");
 		System.out.println("8: Admit a pet");
-		System.out.println("9 Quit");
+		System.out.println("9: Take the dogs for a walk");
+		System.out.println("10: Quit");
 	}
 }

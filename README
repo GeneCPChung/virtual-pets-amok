@@ -7,18 +7,18 @@
 
 VirtualPet class and related subclasses/interfaces	
 -	 	Create a model that allows for dogs and cats, either of which may be robotic
--		Introduce an attribute (instance variable) representing overall health that 		is updated as a result of other attributes moving in a negative or positive 		direction, influencing happiness
+-		Introduce an attribute (instance variable) representing overall health that is updated as a result of other attributes moving in a negative or positive 		direction, influencing happiness
 
 	introduce methods that allow for:
 
 - DONE  oiling robotic pets
--    	walking dogs, decreasing the likelihood that organic dogs will soil their 		cages, while increasing happiness in all dogs
+-    	walking dogs, decreasing the likelihood that organic dogs will soil their cages, while increasing happiness in all dogs
 
 	do not allow:
 -	    feeding/watering robotic pets
 -	    oiling organic pets
 
--		modify the tick method to return a value indicating the amount of waste a pet	creates, which should contribute to either:
+-		modify the tick method to return a value indicating the amount of waste a pet creates, which should contribute to either:
 
 -	    amount of waste in the litter box
 -	    amount of waste in an individual dog cage
@@ -39,7 +39,7 @@ VirtualPetShelterApp class
 In addition to the last project's requirements:
 
     add options to:
--        walk all dogs
+-       walk all dogs
 -       clean dog cages
 -       clean the shelter litterbox
 -       oil all robotic pets
