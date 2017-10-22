@@ -4,13 +4,13 @@ public class OrganicDog extends DogParent implements OrganicInterface {
 	Random rand = new Random();
 	int rngDog1 = rand.nextInt(10) + 1;
 
-	protected int cageStatus = 0;
+	protected int thirst = rngNum5;
+	protected int hunger = rngDog1;
+	protected int cageCleanliness = 0;
 
 	public OrganicDog(String name, String description, int hunger, int boredom, int cageCleanliness, int tiredness,
-			int thirst, int totalHappiness, int totalHealth, int oilLube) {
-		super(name, description, hunger, boredom, cageCleanliness, tiredness, thirst, totalHappiness, totalHealth,
-				oilLube);
-		this.oilLube = 0;
+			int thirst, int totalHappiness, int totalHealth) {
+		super(name, description);
 	}
 
 	public OrganicDog(String name, String description) {
@@ -18,8 +18,12 @@ public class OrganicDog extends DogParent implements OrganicInterface {
 		this.oilLube = 0;
 	}
 
-	public int getCageStatus() {
-		return cageStatus;
+	public int getCageCleanliness() {
+		return cageCleanliness;
+	}
+
+	public int getHunger() {
+		return hunger;
 	}
 
 	@Override
@@ -31,8 +35,18 @@ public class OrganicDog extends DogParent implements OrganicInterface {
 
 	@Override
 	public void waterPets() {
-		int watering = rngDog1;
-		thirst -= watering;
+		int drinking = rngDog1;
+		thirst -= drinking;
+	}
+
+	@Override
+	public void takeAWalk() {
+		cageCleanliness = 0;
+	}
+
+	@Override
+	public String toString() {
+		return super.toString() + hunger + "\t|" + thirst + "\t|" + cageCleanliness;
 	}
 
 }

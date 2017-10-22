@@ -4,11 +4,13 @@ public class OrganicCat extends VirtualPet implements OrganicInterface {
 	Random rand = new Random();
 	int rngCat1 = rand.nextInt(10) + 1;
 
-	public OrganicCat(String name, String description, int hunger, int boredom, int cageCleanliness, int tiredness,
-			int thirst, int totalHappiness, int totalHealth, int oilLube) {
-		super(name, description, hunger, boredom, cageCleanliness, tiredness, thirst, totalHappiness, totalHealth,
-				oilLube);
-		this.oilLube = 0;
+	protected int thirst = rngNum5;
+	protected int hunger = rngNum1;
+	int litterBox = 0;
+
+	public OrganicCat(String name, String description, int hunger, int boredom, int tiredness, int thirst,
+			int totalHappiness, int totalHealth) {
+		super(name, description, boredom, tiredness, totalHappiness, totalHealth);
 	}
 
 	public OrganicCat(String name, String description) {
@@ -16,15 +18,29 @@ public class OrganicCat extends VirtualPet implements OrganicInterface {
 		this.oilLube = 0;
 	}
 
+	public int getLitterBox() {
+		return litterBox;
+	}
+
+	public void cleanLitterBox() {
+		litterBox = 0;
+	}
+
 	@Override
 	public void feedPets() {
 		int eating = rngCat1;
 		hunger -= eating;
-		cageCleanliness += eating;
 	}
 
 	@Override
 	public void waterPets() {
+		int drinking = rngCat1;
+		thirst -= drinking;
+	}
+
+	@Override
+	public String toString() {
+		return super.toString() + hunger + "\t|" + thirst + "\t|" + "\t|" + litterBox;
 	}
 
 }

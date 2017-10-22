@@ -5,9 +5,6 @@ import java.util.Map.Entry;
 
 public class VirtualPetShelter {
 
-	private int litterBox;
-	private int dogCages;
-
 	private Map<String, VirtualPet> shelteredPets = new HashMap<String, VirtualPet>();
 
 	public Map<String, VirtualPet> getShelteredPets() {
@@ -22,22 +19,10 @@ public class VirtualPetShelter {
 		return name;
 	}
 
-	public int getLitterBox() {
-		return litterBox;
-	}
-
-	public int getDogCages() {
-		return dogCages;
-	}
-
-	public void cleanLitterBox() {
-		litterBox = 0;
-	}
-
 	public void cleanDogCages() {
 		for (VirtualPet pets : shelteredPets.values()) {
 			if (!(pets instanceof RoboticInterface)) {
-				pets.cageCleanliness = 0;
+				((OrganicDog) pets).cageCleanliness = 0;
 			}
 		}
 	}
@@ -45,10 +30,6 @@ public class VirtualPetShelter {
 	public void playWithPet(String name) {
 		VirtualPet pets = shelteredPets.get(name);
 		pets.playing();
-	}
-
-	public boolean petPresent(String name) {
-		return (shelteredPets.containsKey(name));
 	}
 
 	public void restPets() {
@@ -59,7 +40,20 @@ public class VirtualPetShelter {
 
 	public void waterPets() {
 		for (VirtualPet pets : shelteredPets.values()) {
-			pets.drinking();
+			if (pets instanceof OrganicDog) {
+				((OrganicDog) pets).waterPets();
+			}
+			if (pets instanceof OrganicCat) {
+				((OrganicCat) pets).waterPets();
+			}
+		}
+	}
+
+	public void walkTheDogs() {
+		for (VirtualPet pets : shelteredPets.values()) {
+			if (pets instanceof DogParent) {
+				((DogParent) pets).takeAWalk();
+			}
 		}
 	}
 
@@ -69,10 +63,8 @@ public class VirtualPetShelter {
 				pets.getTick();
 			}
 
-			if (!(pets instanceof OrganicCat)) {
-				litterBox = 0;
-			} else {
-				litterBox += 3;
+			if (pets instanceof OrganicCat) {
+				((OrganicCat) pets).litterBox = 0;
 			}
 
 		}
@@ -88,7 +80,7 @@ public class VirtualPetShelter {
 	 */
 
 	public void petList() {
-		System.out.println("Name\t\t|Health\t|Happy\t|Hunger\t|Bored\t|Potty\t|Tired\t|Thirst\t|OilLevel");
+		System.out.println("Name\t\t|Happy\t|Health\t|Bored\t|Tired\t|Hunger\t|Thirst\t|Cages\t|Litter\t|OilLevel");
 		System.out.println("-------\t\t|------\t|------\t|------\t|------\t|------\t|------\t|------\t|------");
 		for (Entry<String, VirtualPet> entry : shelteredPets.entrySet()) {
 			System.out.println(entry.getValue());

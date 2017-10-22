@@ -6,7 +6,6 @@ public class VirtualPetsAmokApp {
 		@SuppressWarnings("resource")
 		Scanner input = new Scanner(System.in);
 
-		DogParent dogWalk = new DogParent(null, null);
 		VirtualPetShelter petShelter = new VirtualPetShelter();
 		OrganicDog curly = new OrganicDog("Shemp", " the Dog");
 		RoboDog larry = new RoboDog("Larry", " RoboDog");
@@ -119,7 +118,7 @@ public class VirtualPetsAmokApp {
 				menuOptions();
 			}
 			if (userOpt.equals("9")) {
-				dogWalk.takeAWalk();
+				petShelter.walkTheDogs();
 				System.out.println("The dogs enjoyed their walk around the neighborhood\n");
 				petShelter.petList();
 				menuOptions();
