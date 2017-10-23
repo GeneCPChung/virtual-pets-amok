@@ -6,8 +6,8 @@
 	//instance variable for litter box. create a method to calculate based on how many cats are in the shelter
 
 VirtualPet class and related subclasses/interfaces	
--	 	Create a model that allows for dogs and cats, either of which may be robotic
--		Introduce an attribute (instance variable) representing overall health that is updated as a result of other attributes moving in a negative or positive 		direction, influencing happiness
+- DONE 	Create a model that allows for dogs and cats, either of which may be robotic
+- DONEIntroduce an attribute (instance variable) representing overall health that is updated as a result of other attributes moving in a negative or positive 		direction, influencing happiness
 
 	introduce methods that allow for:
 
