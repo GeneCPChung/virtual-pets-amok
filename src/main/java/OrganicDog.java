@@ -8,6 +8,7 @@ public class OrganicDog extends DogParent implements OrganicInterface {
 
 	protected int thirst = rngDog1;
 	protected int hunger = rngDog2;
+	protected int needToPoop = 0;
 	protected int cageCleanliness = 5;
 
 	public OrganicDog(String name, String description, int hunger, int boredom, int cageCleanliness, int tiredness,
@@ -17,10 +18,6 @@ public class OrganicDog extends DogParent implements OrganicInterface {
 
 	public OrganicDog(String name, String description) {
 		super(name, description);
-	}
-
-	public int getCageCleanliness() {
-		return cageCleanliness;
 	}
 
 	public int getHunger() {
@@ -52,14 +49,14 @@ public class OrganicDog extends DogParent implements OrganicInterface {
 
 		int tickStat = rngAct;
 		if (tickStat < 15) {
-			cageCleanliness += rngNum1;
+			needToPoop += rngNum1;
 			thirst += rngNum2;
 			hunger += rngNum4;
 
 			return tickStat;
 		}
 		if (tickStat >= 15) {
-			cageCleanliness += rngNum1;
+			needToPoop += rngNum1;
 			thirst += rngNum2;
 			hunger += rngNum4;
 
@@ -67,6 +64,17 @@ public class OrganicDog extends DogParent implements OrganicInterface {
 		} else {
 			return 0;
 		}
+	}
+
+	public int soilCage() {
+		if (needToPoop > 15) {
+			cageCleanliness += 10;
+		}
+		return cageCleanliness;
+	}
+
+	public int getCageCleanliness() {
+		return cageCleanliness;
 	}
 
 	@Override

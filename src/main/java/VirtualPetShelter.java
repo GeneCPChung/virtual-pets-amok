@@ -4,7 +4,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 public class VirtualPetShelter {
-	protected int litterBox;
+	protected int litterBox = 0;
 	protected int incommingPoop;
 	OrganicCat litterBoxFill = new OrganicCat(null, null, 0, 0, 0, 0, 0, 0, 0);
 
@@ -16,6 +16,10 @@ public class VirtualPetShelter {
 
 	public Collection<VirtualPet> shelteredPetsValues() {
 		return shelteredPets.values();
+	}
+
+	public int getLitterBox() {
+		return litterBox;
 	}
 
 	public VirtualPet accessShelteredPet(VirtualPet name) {
@@ -109,7 +113,7 @@ public class VirtualPetShelter {
 			}
 			if (pets instanceof OrganicCat) {
 				incommingPoop = ((OrganicCat) pets).getlitterBox();
-				litterBox = litterBox += incommingPoop;
+				litterBox += incommingPoop;
 			}
 			if (pets instanceof OrganicCat) {
 				incommingPoop = ((OrganicCat) pets).removeLitterBox();
@@ -142,7 +146,7 @@ public class VirtualPetShelter {
 	}
 
 	public void emptyLitterbox() {
-		litterBox = 0;
+		this.getLitterBox();
 	}
 
 	public void addPet(VirtualPet shelteredPet) {
