@@ -77,7 +77,6 @@ public class OrganicCat extends VirtualPet implements OrganicInterface {
 		else {
 			return 0;
 		}
-
 	}
 
 	@Override
