@@ -7,10 +7,13 @@ public class VirtualPetsAmokApp {
 		Scanner input = new Scanner(System.in);
 
 		VirtualPetShelter petShelter = new VirtualPetShelter();
-		OrganicDog curly = new OrganicDog("Shemp", " the Dog");
+		OrganicDog curly = new OrganicDog("Curly", " the Dog");
+		OrganicDog hurly = new OrganicDog("Hurly", " the Dog");
 		RoboDog larry = new RoboDog("Larry", " RoboDog");
+		RoboDog barry = new RoboDog("Barry", " RoboDog");
 		RoboCat moe = new RoboCat("Moe", " RoboCat");
-		OrganicCat shemp = new OrganicCat("Curly", " the Cat");
+		RoboCat joe = new RoboCat("Joe", " RoboCat");
+		OrganicCat shemp = new OrganicCat("Shemp", " the Cat");
 		OrganicCat sherry = new OrganicCat("Sherry", " the Cat");
 
 		petShelter.addPet(curly);
@@ -18,23 +21,30 @@ public class VirtualPetsAmokApp {
 		petShelter.addPet(moe);
 		petShelter.addPet(shemp);
 		petShelter.addPet(sherry);
+		petShelter.addPet(hurly);
+		petShelter.addPet(barry);
+		petShelter.addPet(joe);
 
 		System.out.println("Thanks for volunteering at our shelter! Here is a list of the animals that we have: \n");
+
 		petShelter.petList();
+		petShelter.litterBoxStatus();
 		menuOptions();
 		String userOpt;
 		do {
 			// Tick
+
 			petShelter.petUpdate();
+
 			userOpt = input.nextLine();
 
 			// Game
 
 			// Create feeding based on robot or organic
 			if (userOpt.equals("1")) {
-				System.out.println("Would you like to feed the Robot Pets or Organic Pets?");
-				System.out.println("Choose:\n1: To feed the Robot Pets\n2: To feed the Organic Pets");
 
+				System.out.println("You fed all of your organic pets");
+				petShelter.petList();
 				menuOptions();
 			}
 			if (userOpt.equals("2")) {
@@ -72,6 +82,7 @@ public class VirtualPetsAmokApp {
 			if (userOpt.equals("6")) {
 				System.out.println("Here are the updated stats for all of the pets: ");
 				petShelter.petList();
+				petShelter.litterBoxStatus();
 				menuOptions();
 			}
 			if (userOpt.equals("7")) {
@@ -123,21 +134,37 @@ public class VirtualPetsAmokApp {
 				petShelter.petList();
 				menuOptions();
 			}
-		} while (!userOpt.equals("10"));
+			if (userOpt.equals("10")) {
+				petShelter.emptyLitterbox();
+				System.out.println("You emptied the Cat's Litter Box");
+
+				petShelter.petList();
+				petShelter.litterBoxStatus();
+				menuOptions();
+			}
+			if (userOpt.equals("11")) {
+				petShelter.oilRobots();
+				System.out.println("You oiled your robot pets");
+				petShelter.petList();
+				petShelter.litterBoxStatus();
+				menuOptions();
+			}
+		} while (!userOpt.equals("12"));
 
 	}
 
 	public static void menuOptions() {
 		System.out.println("\nWhat would you like to help with?\n");
-		System.out.println("1: Feed all of the pets");
+		System.out.println("1: Feed the organic pets");
 		System.out.println("2: Play with one of the pets");
 		System.out.println("3: Clean the dog cages");
 		System.out.println("4: Give the pets a nap");
-		System.out.println("5: Give all of the pets some water");
-		System.out.println("6: Check on the pets stats");
+		System.out.println("5: Give the organic pets some water");
+		System.out.println("6: Check on pets stats");
 		System.out.println("7: Adopt a pet");
 		System.out.println("8: Admit a pet");
 		System.out.println("9: Take the dogs for a walk");
-		System.out.println("10: Quit");
+		System.out.println("10: Empty the Litter Box");
+		System.out.println("11: Change the Robots Oil");
 	}
 }

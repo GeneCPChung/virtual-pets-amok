@@ -18,7 +18,7 @@ VirtualPet class and related subclasses/interfaces
 - DONE  feeding/watering robotic pets
 - DONE	oiling organic pets
 
--		modify the tick method to return a value indicating the amount of waste a pet creates, which should contribute to either:
+- DONE	modify the tick method to return a value indicating the amount of waste a pet creates, which should contribute to either:
 
 - DONE  amount of waste in the litter box
 - DONE  amount of waste in an individual dog cage
@@ -30,9 +30,9 @@ In addition to the last project's requirements:
     introduce methods that allow for:
 - DONE  oiling/maintaining all robotic pets
 - DONE  cleaning dog cages
-- 		emptying the litterbox
+- DONE	emptying the litterbox
 
--	    modify existing methods to only feed/water pets that are not robotic
+- DONE  modify existing methods to only feed/water pets that are not robotic
 
 VirtualPetShelterApp class
 

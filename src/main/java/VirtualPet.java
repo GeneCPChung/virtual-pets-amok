@@ -2,7 +2,7 @@ import java.util.Random;
 
 public abstract class VirtualPet {
 	Random rand = new Random();
-	int rngAct = rand.nextInt(10) + 1;
+	int rngAct = rand.nextInt(25) + 1;
 	int rngNum1 = rand.nextInt(10) + 1;
 	int rngNum2 = rand.nextInt(5) + 1;
 	int rngNum3 = rand.nextInt(5) + 1;
@@ -20,8 +20,8 @@ public abstract class VirtualPet {
 	protected String description;
 	protected int boredom = rngNum2;
 	protected int tiredness = rngNum4;
-	protected int totalHappiness = rngNum7;
-	protected int totalHealth = rngNum8;
+	protected int totalHappiness = 50;
+	protected int totalHealth = 50;
 	protected int oilLube = rngNum9;
 
 	// Constructor
@@ -48,13 +48,11 @@ public abstract class VirtualPet {
 			boredom += rngNum2;
 			tiredness += rngNum4;
 			return tickStat;
-
 		}
 		if (tickStat >= 6) {
 			boredom += rngNum4;
 			tiredness += rngNum2;
 			return tickStat;
-
 		} else {
 			return 0;
 		}
@@ -87,14 +85,20 @@ public abstract class VirtualPet {
 	// Actions
 
 	void playing() {
-		int play = rngAct;
-		boredom += play;
+		int play = rngNum1;
+		boredom -= play;
 		tiredness += play;
+		if (boredom < 0) {
+			boredom = 0;
+		}
 	}
 
 	void sleeping() {
-		int sleeping = rngAct;
+		int sleeping = rngNum2;
 		tiredness -= sleeping;
+		if (tiredness < 0) {
+			tiredness = 0;
+		}
 	}
 
 	@Override

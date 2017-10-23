@@ -4,6 +4,9 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 public class VirtualPetShelter {
+	protected int litterBox;
+	protected int incommingPoop;
+	OrganicCat litterBoxFill = new OrganicCat(null, null, 0, 0, 0, 0, 0, 0, 0);
 
 	private Map<String, VirtualPet> shelteredPets = new HashMap<String, VirtualPet>();
 
@@ -23,6 +26,17 @@ public class VirtualPetShelter {
 		for (VirtualPet pets : shelteredPets.values()) {
 			if (!(pets instanceof RoboticInterface)) {
 				((OrganicDog) pets).cageCleanliness = 0;
+			}
+		}
+	}
+
+	public void feedOrganicPets() {
+		for (VirtualPet pets : shelteredPets.values()) {
+			if (pets instanceof OrganicCat) {
+				((OrganicCat) pets).feedPets();
+			}
+			if (pets instanceof OrganicDog) {
+				((OrganicDog) pets).feedPets();
 			}
 		}
 	}
@@ -57,34 +71,78 @@ public class VirtualPetShelter {
 		}
 	}
 
-	public void petUpdate() {
+	public void oilRobots() {
 		for (VirtualPet pets : shelteredPets.values()) {
-			if (!(pets instanceof RoboticInterface)) {
-				pets.getTick();
+			if (pets instanceof RoboCat) {
+				((RoboCat) pets).oilPets();
+			}
+			if (pets instanceof RoboDog) {
+				((RoboDog) pets).oilPets();
+			}
+		}
+	}
+
+	public void petUpdate() {
+
+		for (VirtualPet pets : shelteredPets.values()) {
+
+			if (pets instanceof RoboDog) {
+				((RoboDog) pets).getRoboDogTick();
+			}
+
+			if (pets instanceof RoboDog) {
+				((RoboDog) pets).calcRoboHappiness();
+			}
+
+			if (pets instanceof RoboCat) {
+				((RoboCat) pets).getRoboCatTick();
+			}
+			if (pets instanceof RoboCat) {
+				((RoboCat) pets).calcRoboHappiness();
 			}
 
 			if (pets instanceof OrganicCat) {
-				((OrganicCat) pets).litterBox = 0;
+				((OrganicCat) pets).calcCatHappiness();
+			}
+			if (pets instanceof OrganicCat) {
+				((OrganicCat) pets).getCatTick();
+			}
+			if (pets instanceof OrganicCat) {
+				incommingPoop = ((OrganicCat) pets).getlitterBox();
+				litterBox = litterBox += incommingPoop;
+			}
+			if (pets instanceof OrganicCat) {
+				incommingPoop = ((OrganicCat) pets).removeLitterBox();
 			}
 
-		}
+			if (pets instanceof OrganicDog) {
+				((OrganicDog) pets).cageCleanliness += ((OrganicDog) pets).rngDog1;
+				((OrganicDog) pets).getDogTick();
+			}
 
+			if (pets instanceof OrganicDog) {
+				((OrganicDog) pets).calcDogHappiness();
+			}
+
+			pets.getTick();
+		}
 	}
 
-	/*
-	 * public void litterBoxStatus() { if (this.getLitterBox() <= 5) {
-	 * System.out.println(litterBox);
-	 * System.out.println("Litter Box is about empty."); } if (this.getLitterBox()
-	 * >= 5) { System.out.println(litterBox);
-	 * System.out.println("Litter Box is 1/4 full."); } }
-	 */
+	public void litterBoxStatus() {
+		System.out.println("Litter box is currently at: " + litterBox);
+	}
 
 	public void petList() {
-		System.out.println("Name\t\t|Happy\t|Health\t|Bored\t|Tired\t|Hunger\t|Thirst\t|Cages\t|Litter\t|OilLevel");
+		System.out.println("Name\t\t|Happy\t|Health\t|Bored\t|Tired\t|Hunger\t|Thirst\t|Cages\t|OilLevel");
 		System.out.println("-------\t\t|------\t|------\t|------\t|------\t|------\t|------\t|------\t|------");
 		for (Entry<String, VirtualPet> entry : shelteredPets.entrySet()) {
 			System.out.println(entry.getValue());
+
 		}
+	}
+
+	public void emptyLitterbox() {
+		litterBox = 0;
 	}
 
 	public void addPet(VirtualPet shelteredPet) {
